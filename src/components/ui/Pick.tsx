@@ -3,7 +3,7 @@ import React from 'react';
 
 const Pick = () => {
   return (
-    <div className="flex flex-col gap-[48px] items-center mt-40 px-4">
+    <div className="flex flex-col gap-[48px] items-center mt-[200px] md:mt-40 px-4">
       {/* Header Section */}
       <div className="flex flex-col justify-center items-center text-center">
         <div className="text-[20px] md:text-[24px] text-[#252B42] font-semibold">EDITOR'S PICK</div>

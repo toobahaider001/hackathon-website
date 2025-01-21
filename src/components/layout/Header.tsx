@@ -37,7 +37,11 @@ const Header = () => {
           <div className='text-[14px] text-blue-500 font-bold'>Login/Register</div>
         </div>
         <div><IoSearchSharp color='blue' /></div>
-        <div><BsCart color='blue' size={20} /></div>
+        <div>
+          <Link href="/your_cart">
+          <BsCart color='blue' size={20} />
+          </Link>
+          </div>
         <div><CiHeart color='blue' size={20} className='md:block hidden' /></div>
       </div>
 

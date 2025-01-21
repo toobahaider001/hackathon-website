@@ -1,27 +1,48 @@
 import React from 'react';
 import ProductCard from '../shared/ProductCard';
+import { client } from '@/sanity/lib/client';
+import { productType } from '@/types/products';
 
-const Cards = () => {
+const Cards = async () => {
+  const query = `*[_type == "product"] {
+    _id,
+    title,
+    description,
+    productImage {
+      asset-> {
+        _id,
+        url
+      }
+    },
+    price,
+    tags,
+    discountPercentage,
+    isNew
+  }`;
+
+  const data: productType[] = await client.fetch(query);
+
   return (
-    <div className="flex flex-col justify-center mt-8 px-4">
-      {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 -pt-9  sm:gap-4 lg:gap-4 justify-items-center">
-        <ProductCard src="/man.png" primary />
-        <ProductCard src="/woman.png" primary />
-        <ProductCard src="/product7.png" primary />
-        <ProductCard src="/kids.png" primary />
-        <ProductCard src="/height5.png" primary />
-        <ProductCard src="/product1.png" primary />
-        <ProductCard src="/product2.png" primary />
-        <ProductCard src="/product8.png" primary />
-        <ProductCard src="/product3.png" primary />
-        <ProductCard src="/product4.png" primary />
-        <ProductCard src="/product5.png" primary />
-        <ProductCard src="/product6.png" primary />
-      </div>
+    <div className="grid grid-cols-4 items-center mt-8 px-4">
+      {data.map((item, index) => {
+        return (
+          <div key={index}>
+            <ProductCard
+              id={item._id}
+              title={item.title}
+              discountPercentage={item.dicountPercentage} // Fixed typo here
+              isNew={item.isNew}
+              price={item.price}
+              productImage={item.productImage.asset.url} // Correct way to pass image URL
+              tags={item.tags}
+              description={item.description}
+            />
+          </div>
+        );
+      })}
 
       {/* Pagination */}
-      <div className="flex   justify-center items-center gap-2 mt-8">
+      <div className="flex justify-center items-center gap-2 mt-8">
         <div className="flex items-center justify-center h-10 w-20 bg-[#F3F3F3] text-[14px] rounded-lg cursor-pointer">
           First
         </div>
