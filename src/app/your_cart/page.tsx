@@ -84,7 +84,7 @@ const Page = () => {
         ))}
       </div>
       
-      <div className="mt-9 p-9 border-2  rounded-2xl border-zinc-400 flex flex-col gap-9 h-[400px] w-[400px] ">
+      <div className="mt-9 p-9 border-2  rounded-2xl border-zinc-400 flex flex-col gap-9 md:h-[400px] md:w-[400px] h-[200px] w-[300px] ">
         <div className='text-xl font-bold'> Total Items:{data.length}</div>
         <div className="text-xl font-semibold">Total Price: ${totalPrice.toFixed(2)}</div>
       </div>

@@ -47,7 +47,7 @@ const Seller = async () => {
                   price={item.price}
                   productImage={item.productImage.asset.url}
                   tags={item.tags}
-                  description={item.description}
+                  description={item.description.slice(0, 150)}
                 />
               </div>
             )
