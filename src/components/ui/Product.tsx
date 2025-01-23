@@ -22,7 +22,7 @@ const Product = async () => {
         </div>
 
         {/* Product Cards Section */}
-        <div className="grid md:grid-cols-4 items-center gap-[80px]">
+        <div className="grid md:grid-cols-4 items-center gap-[50px]">
           {data.map((item: productType) => (
             <ProductCard
               id={item._id}

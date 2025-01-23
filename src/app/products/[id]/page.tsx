@@ -42,8 +42,8 @@ const ProductPage = async ({
   }
 
   return (
-    <div className="flex justify-center mt-9">
-      <div className="md:h-[700px] w-full justify-center flex gap-8">
+    <div className="flex justify-center mt-9 border-[2px] border-zinc-500 ">
+      <div className="md:h-[700px] w-full justify-center flex gap-8 border-[]">
         <div className="flex justify-center mt-[50px]">
           <Image
             src={foundProduct.productImage.asset.url}

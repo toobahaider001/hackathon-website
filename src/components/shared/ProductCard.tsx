@@ -41,28 +41,53 @@ const ProductCard: React.FC<ProductProps> = (
     };
 
     return (
-        <div className=''>
+        <div className='bg-white shadow-lg rounded-lg w-full overflow-hidden transition-transform transform hover:scale-105'>
             <Link href={`/products/${id}`}>
-                <div className='h-[600px] w-[238px] flex flex-col justify-between'>
-                    <Image src={productImage} alt={title || 'Product Image'} width={239} height={427} />
-                    <div className='flex flex-col items-center gap-[10px] mt-[25px]'>
-                        <div className='text-[16px] font-bold'>{title}</div>
-                        <div className='text-[#737373] text-[14px]'>{description?.slice(0, 150)}</div>
-                        <div className='flex gap-[10px]'>
-                            {/* <div className='text-[#BDBDBD] font-bold'>${price1}</div> */}
-                            {/* <div className='text-[#23856D] font-bold'>${price2}</div> */}
-                        </div>
-                        <div className='flex gap-[6.08px]'>
-                            <div className='w-[16px] h-[16px] rounded-full bg-[#23A6F0]'></div>
-                            <div className='w-[16px] h-[16px] rounded-full bg-[#23856D]'></div>
-                            <div className='w-[16px] h-[16px] rounded-full bg-[#E77C40]'></div>
-                            <div className='w-[16px] h-[16px] rounded-full bg-[#252B42]'></div>
-                        </div>
-                    </div>
+                <div className='relative h-[400px] w-full'>
+                    <Image 
+                        src={productImage} 
+                        alt={title || 'Product Image'} 
+                        width={400} 
+                        height={400} 
+                        className='object-cover w-full h-full' 
+                    />
+                    {isNew && (
+                        <span className="absolute top-2 left-2 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                            New
+                        </span>
+                    )}
                 </div>
             </Link>
-            <div>
-                <Button label='AddToCart' secondary onClick={() => addToCart(data)} />
+            <div className='p-4'>
+                <h2 className='text-xl font-semibold text-gray-800'>{title}</h2>
+                <p className='text-sm text-gray-500 mt-2'>{description?.slice(0, 150)}...</p>
+                <div className='mt-4 flex items-center justify-between'>
+                    <span className='text-lg font-bold text-green-600'>
+                        ${price.toFixed(2)}
+                    </span>
+                    {discountPercentage > 0 && (
+                        <span className='bg-red-100 text-red-600 text-sm font-medium px-2 py-1 rounded'>
+                            {discountPercentage}% Off
+                        </span>
+                    )}
+                </div>
+                <div className='mt-4 flex flex-wrap gap-2'>
+                    {tags.map((tag, index) => (
+                        <span 
+                            key={index} 
+                            className='bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full'
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+            </div>
+            <div className='p-4'>
+                <Button 
+                    label='Add to Cart' 
+                    secondary 
+                    onClick={() => addToCart(data)} 
+                />
             </div>
         </div>
     );
