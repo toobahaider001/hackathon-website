@@ -1,22 +1,7 @@
 import ProductCard from '../shared/ProductCard';
 import { productType } from '@/types/products';
 
-export const getServerSideProps = async () => {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
-    if (!res.ok) throw new Error('Failed to fetch products');
-    const data: productType[] = await res.json();
 
-    return {
-      props: { products: data },
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: { products: [] },
-    };
-  }
-};
 
 const Product = ({ products }: { products: productType[] }) => {
   if (!products.length) {
