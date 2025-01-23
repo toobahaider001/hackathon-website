@@ -1,28 +1,21 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
 import ProductCard from '../shared/ProductCard';
 import { client } from '@/sanity/lib/client';
 import { productType } from '@/types/products';
 import { it } from 'node:test';
+import { getCart } from '@/app/actions/query';
 
-const Seller = async () => {
-  const query = `*[_type == "product" && isNew == true] {
-    _id,
-    title,
-    description,
-    productImage{
-        asset->{
-            _id,
-            url
-        }
-    },
-    price,
-    tags,
-    discountPercentage,
-    isNew
-  }`
-
-  const data: productType[] = await client.fetch(query);
-  console.log(data)
+const Seller =  () => {
+  const [data, setData] = useState<productType[]>([]);
+  useEffect(() => {
+      const fetchCartData = async() => {
+        const res = await getCart();
+        setData(res);
+      }
+      fetchCartData();
+    }, []);
+  
   return (
     <div className="flex flex-col mt-10 bg-[#FAFAFA]">
       {/* Title */}

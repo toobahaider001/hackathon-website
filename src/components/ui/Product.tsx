@@ -1,11 +1,9 @@
 import ProductCard from '../shared/ProductCard';
 import { productType } from '@/types/products';
 
-
-
 const Product = ({ products }: { products: productType[] }) => {
   if (!products.length) {
-    return <div>Error loading products. Please try again later.</div>;
+    return <div>Error loading products. Please try again later.</div>
   }
 
   return (

@@ -1,7 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { productType } from "@/types/products";
 
-export  const getCart = async ()=>{
+export const getCart = async () => {
   const query = `
   *[_type == "order"]{
     _id,
@@ -19,6 +19,6 @@ export  const getCart = async ()=>{
     isNew
   }
 `;
-const data:productType[] =await client.fetch(query);
-return data
-}
+  const data: productType[] = await client.fetch(query);
+  return data;
+};
