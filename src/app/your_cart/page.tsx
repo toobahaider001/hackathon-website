@@ -6,7 +6,7 @@ import { deleteCart } from '../actions/deleteCart';
 import { getCart } from '../actions/query';
 import Image from 'next/image';
 
-const Page = () => {
+const page = () => {
   const [data, setData] = useState<productType[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -92,4 +92,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;
