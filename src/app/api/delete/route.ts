@@ -3,10 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function DELETE(request: Request) {
   try {
-    // Parse the request body to extract the product ID
     const { id }: { id: string } = await request.json();
 
-    // Validate that the ID is provided
     if (!id) {
       return NextResponse.json(
         { error: "Product ID is required for deletion" },
@@ -14,7 +12,6 @@ export async function DELETE(request: Request) {
       );
     }
 
-    // Delete the product document from Sanity CMS
     const result = await client.delete(id);
 
     return NextResponse.json(
