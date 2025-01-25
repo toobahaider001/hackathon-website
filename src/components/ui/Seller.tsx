@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from '../shared/ProductCard';
 import { client } from '@/sanity/lib/client';
 import { productType } from '@/types/products';
-import { it } from 'node:test';
 import { getCart } from '@/app/actions/query';
 
 const Seller =  () => {
